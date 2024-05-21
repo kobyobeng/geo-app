@@ -4,12 +4,19 @@ pipeline{
     tools{
         maven 'M2_HOME'
     }
-    
+
     stages{
         stage("maven"){
             steps{
                 sh 'mvn clean validate compile install test package'
             
+            }
+        }
+        stage('upload artigact'){
+            steps{
+                sh 'curl -uadmin:AP5TTRnCVWQLxm8mg63Ms9RrfzT -T \
+                target/bio*.jar \
+                "http://52.91.131.172:8081/artifactory/geolocation/geo/bio_${BUILD_ID}.jar"'
             }
         }
     }
