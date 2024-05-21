@@ -10,8 +10,7 @@ pipeline{
                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=kobyobeng_geo-app'
             }
         }   
-    }
-    
+
     stages{
         stage("maven"){
             steps{
